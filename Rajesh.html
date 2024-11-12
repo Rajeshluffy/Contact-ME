@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Personal Links</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: url('https://i.imgur.com/EfrmBkq.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            border: 2px solid #1a73e8;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #1a73e8;
+            font-weight: 700;
+        }
+        p {
+            font-size: 16px;
+            margin: 5px 0 15px;
+            color: #555;
+        }
+        a {
+            display: block;
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 8px 0;
+            transition: all 0.3s;
+            border-radius: 6px;
+        }
+        a:hover {
+            background-color: #1a73e8;
+            color: #fff;
+        }
+    </style>
+    <script>
+        function decryptText(encodedText) {
+            return atob(encodedText);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const contactElement = document.getElementById("contact");
+            contactElement.textContent = decryptText("KzkxIDg5Mzk2MDAzNTc="); 
+
+            const emailLink = document.getElementById("emailLink");
+            emailLink.href = "mailto:" + decryptText("cmFqZXNodmVlcmFtYW5pMTJAZ21haWwuY29t"); 
+            emailLink.textContent = "Gmail";
+			
+			const linkedIn = document.getElementById("linkedIn");
+            linkedIn.href = decryptText("aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3JhamVzaC12ZWVyYW1hbmk="); 
+            linkedIn.textContent = "LinkedIn";
+			
+			const facebook = document.getElementById("facebook");
+            facebook.href = decryptText("aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3NoYXJlLzFRUGdmbU5mSG8v"); 
+            facebook.textContent = "Facebook";
+			
+			const instagram = document.getElementById("instagram");
+            instagram.href = decryptText("aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9pbV9yYWplc2hfMjUvcHJvZmlsZWNhcmQvP2lnc2g9TVcxNU1USnphM2xtTUdKeGJnPT0="); 
+            instagram.textContent = "Instagram";
+			
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+       <h1>Rajesh</h1>
+       <p id="contact"></p>
+       <h2>Professional Links</h2>
+       <a id="emailLink" target="_blank"></a>
+	   <a id="linkedIn" target="_blank"></a>
+             <h3>Social Media Links</h3>
+			  <a id="facebook" target="_blank"></a>
+			 <a id="instagram" target="_blank"></a>
+           </div>
+</body>
+</html>
