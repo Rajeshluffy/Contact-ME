@@ -78,32 +78,40 @@
             const decryptedContact = decryptText("KzkxIDg5Mzk2MDAzNTc=");
             contactElement.textContent = decryptedContact;
 
-          contactElement.addEventListener("click", () => {
-    navigator.clipboard.writeText(decryptedContact).then(() => {
-        // Create alert element
-        const alertBox = document.createElement("div");
-        alertBox.textContent = "Contact copied to clipboard!";
-        alertBox.style.position = "fixed";
-        alertBox.style.top = "20px";
-        alertBox.style.left = "50%";
-        alertBox.style.transform = "translateX(-50%)";
-        alertBox.style.backgroundColor = "#28a745"; // Success green color
-        alertBox.style.color = "#fff";
-        alertBox.style.padding = "10px 20px";
-        alertBox.style.borderRadius = "5px";
-        alertBox.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
-        alertBox.style.zIndex = "1000";
+              contactElement.addEventListener("click", () => {
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // Open phone dialer on mobile
+        window.location.href = `tel:${decryptedContact}`;
+    } else {
+        // Copy to clipboard for non-mobile environments
+        navigator.clipboard.writeText(decryptedContact).then(() => {
+            // Create alert element
+            const alertBox = document.createElement("div");
+            alertBox.textContent = "Contact copied to clipboard!";
+            alertBox.style.position = "fixed";
+            alertBox.style.top = "20px";
+            alertBox.style.left = "50%";
+            alertBox.style.transform = "translateX(-50%)";
+            alertBox.style.backgroundColor = "#28a745"; // Success green color
+            alertBox.style.color = "#fff";
+            alertBox.style.padding = "10px 20px";
+            alertBox.style.borderRadius = "5px";
+            alertBox.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+            alertBox.style.zIndex = "1000";
 
-        // Append to body
-        document.body.appendChild(alertBox);
+            // Append to body
+            document.body.appendChild(alertBox);
 
-        // Hide the alert after 3 seconds
-        setTimeout(() => {
-            alertBox.remove();
-        }, 1000);
-    }).catch(err => {
-        console.error("Failed to copy: ", err);
-    });
+            // Hide the alert after 3 seconds
+            setTimeout(() => {
+                alertBox.remove();
+            }, 3000);
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    }
 });
 
 
