@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Verdana', sans-serif;
-            background: url('https://imgur.com/S4iv8rq.jpg') no-repeat center center;
+            background: url('https://raw.githubusercontent.com/Rajeshluffy/Contact-ME/main/assets/desktop-bg.jpg') no-repeat center center;
             background-size: cover;
             color: #333;
             display: flex;
@@ -20,7 +20,7 @@
         /* Media query for mobile devices */
         @media (max-width: 768px) {
             body {
-                background: url('https://imgur.com/KOOcn6q.jpg') no-repeat center center;
+                background: url('https://raw.githubusercontent.com/Rajeshluffy/Contact-ME/main/assets/mobile-bg.jpg') no-repeat center center;
                 background-size: cover;
             }
         }
@@ -75,58 +75,42 @@
             const decryptedContact = decryptText("KzkxIDg5Mzk2MDAzNTc=");
             contactElement.textContent = decryptedContact;
 
-              contactElement.addEventListener("click", () => {
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-    
-    if (isMobile) {
-        // Open phone dialer on mobile
-        window.location.href = `tel:${decryptedContact}`;
-    } else {
-        // Copy to clipboard for non-mobile environments
-        navigator.clipboard.writeText(decryptedContact).then(() => {
-            // Create alert element
-            const alertBox = document.createElement("div");
-            alertBox.textContent = "Contact copied to clipboard!";
-            alertBox.style.position = "fixed";
-            alertBox.style.top = "20px";
-            alertBox.style.left = "50%";
-            alertBox.style.transform = "translateX(-50%)";
-            alertBox.style.backgroundColor = "#28a745"; // Success green color
-            alertBox.style.color = "#fff";
-            alertBox.style.padding = "10px 20px";
-            alertBox.style.borderRadius = "5px";
-            alertBox.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
-            alertBox.style.zIndex = "1000";
+            contactElement.addEventListener("click", () => {
+                const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+                if (isMobile) {
+                    window.location.href = `tel:${decryptedContact}`;
+                } else {
+                    navigator.clipboard.writeText(decryptedContact).then(() => {
+                        const alertBox = document.createElement("div");
+                        alertBox.textContent = "Contact copied to clipboard!";
+                        alertBox.style.position = "fixed";
+                        alertBox.style.top = "20px";
+                        alertBox.style.left = "50%";
+                        alertBox.style.transform = "translateX(-50%)";
+                        alertBox.style.backgroundColor = "#28a745";
+                        alertBox.style.color = "#fff";
+                        alertBox.style.padding = "10px 20px";
+                        alertBox.style.borderRadius = "5px";
+                        alertBox.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.1)";
+                        alertBox.style.zIndex = "1000";
+                        document.body.appendChild(alertBox);
+                        setTimeout(() => {
+                            alertBox.remove();
+                        }, 3000);
+                    }).catch(err => {
+                        console.error("Failed to copy: ", err);
+                    });
+                }
+            });
 
-            // Append to body
-            document.body.appendChild(alertBox);
-
-            // Hide the alert after 3 seconds
-            setTimeout(() => {
-                alertBox.remove();
-            }, 3000);
-        }).catch(err => {
-            console.error("Failed to copy: ", err);
-        });
-    }
-});
-
-
-            const emailLink = document.getElementById("emailLink");
-            emailLink.href = "mailto:" + decryptText("cmFqZXNodmVlcmFtYW5pMTJAZ21haWwuY29t");
-            emailLink.textContent = "Gmail";
-
-            const linkedIn = document.getElementById("linkedIn");
-            linkedIn.href = decryptText("aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3JhamVzaC12ZWVyYW1hbmk=");
-            linkedIn.textContent = "LinkedIn";
-
-            const facebook = document.getElementById("facebook");
-            facebook.href = decryptText("aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3NoYXJlLzFRUGdmbU5mSG8v");
-            facebook.textContent = "Facebook";
-
-            const instagram = document.getElementById("instagram");
-            instagram.href = decryptText("aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9pbV9yYWplc2hfMjUvcHJvZmlsZWNhcmQvP2lnc2g9TVcxNU1USnphM2xtTUdKeGJnPT0=");
-            instagram.textContent = "Instagram";
+            document.getElementById("emailLink").href = "mailto:" + decryptText("cmFqZXNodmVlcmFtYW5pMTJAZ21haWwuY29t");
+            document.getElementById("emailLink").textContent = "Gmail";
+            document.getElementById("linkedIn").href = decryptText("aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL3JhamVzaC12ZWVyYW1hbmk=");
+            document.getElementById("linkedIn").textContent = "LinkedIn";
+            document.getElementById("facebook").href = decryptText("aHR0cHM6Ly93d3cuZmFjZWJvb2suY29tL3NoYXJlLzFRUGdmbU5mSG8v");
+            document.getElementById("facebook").textContent = "Facebook";
+            document.getElementById("instagram").href = decryptText("aHR0cHM6Ly93d3cuaW5zdGFncmFtLmNvbS9pbV9yYWplc2hfMjUvcHJvZmlsZWNhcmQvP2lnc2g9TVcxNU1USnphM2xtTUdKeGJnPT0=");
+            document.getElementById("instagram").textContent = "Instagram";
         });
     </script>
 </head>
